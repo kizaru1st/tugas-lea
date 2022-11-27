@@ -23,7 +23,7 @@
                     </div>
                     <h2 class="">Selamat Datang</h2>
 
-                    <form action="{{ route('login.action') }}" method="POST">
+                    <form action="{{ route('login.store') }}" method="POST">
                         @csrf
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text" class="form-control form-control-xl" placeholder="Email" name="email" required>
@@ -40,7 +40,7 @@
                         <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
-                        <p class="text-gray-600">Don't have an account? <a href="{{ route('register') }}" class="font-bold">Sign
+                        <p class="text-gray-600">Don't have an account? <a href="{{ route('register.create') }}" class="font-bold">Sign
                                 up</a>.</p>
                     </div>
                 </div>

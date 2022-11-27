@@ -24,9 +24,10 @@
             </div>
             <h2 class="">Selamat Datang</h2>
 
-            <form action="{{ route('register.action') }}" method="POST">
+            <form action="{{ route('register.store') }}" method="POST">
+            @csrf
                 <div class="form-group position-relative has-icon-left mb-4">
-                    <input type="text" class="form-control form-control-xl" placeholder="Name" name="name">
+                    <input type="text" class="form-control form-control-xl" placeholder="Username" name="username">
                     <div class="form-control-icon">
                         <i class="bi bi-envelope"></i>
                     </div>
@@ -52,7 +53,7 @@
                 <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Sign Up</button>
             </form>
             <div class="text-center mt-5 text-lg fs-4">
-                <p class='text-gray-600'>Already have an account? <a href="auth-login.html" class="font-bold">Log
+                <p class='text-gray-600'>Already have an account? <a href="{{ route('login.create') }}" class="font-bold">Log
                         in</a>.</p>
             </div>
         </div>
