@@ -34,10 +34,14 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RegistrationRequest $request)
+    public function store(Request $request)
     {
-        User::create($request->all());
-        return redirect('/');
+        User::create([
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => $request->password
+        ]);
+        return redirect('/login');
     }
 
     /**
