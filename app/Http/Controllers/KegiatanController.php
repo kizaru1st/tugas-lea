@@ -43,8 +43,8 @@ class KegiatanController extends Controller
         ]);
         return redirect(route("kegiatan.index"));
     }
-    
-   
+
+
 
     /**
      * Display the specified resource.
@@ -79,7 +79,7 @@ class KegiatanController extends Controller
             "November",
             "Desember",
         ];
-        return view('admin.edit-kegiatan', compact('kegiatan'));
+        return view('admin.edit-kegiatan', compact('kegiatan', 'lists1'));
     }
 
     /**

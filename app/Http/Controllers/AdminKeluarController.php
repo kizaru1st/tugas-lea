@@ -75,9 +75,9 @@ class AdminKeluarController extends Controller
             "November",
             "Desember",
         ];
-        return view('admin.edit-datakeluar', compact('data_keluar'));
+        return view('admin.edit-datakeluar', compact('data_keluar', 'lists'));
     }
-   
+
     /**
      * Update the specified resource in storage.
      *
