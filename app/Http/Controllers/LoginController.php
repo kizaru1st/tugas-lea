@@ -43,7 +43,7 @@ class LoginController extends Controller
             'password' => ['required']
         ]);
         if (Auth::attempt($attr)) {
-            return redirect(RouteServiceProvider::HOME);
+            return redirect('/admin/dashboard');
         }
         throw ValidationException::withMessages([
             'email' => 'Email Salah',
