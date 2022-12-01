@@ -7,6 +7,7 @@ use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminMasukController;
+use App\Http\Controllers\AdminKeluarController;
 
 Route::get('/login', [LoginController::class, 'create'])->name('login.create');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
@@ -20,4 +21,5 @@ Route::group(['prefix' => 'admin'], function(){
     Route::resource('/dashboard', DashboardController::class);
     Route::resource('/data-masuk', AdminMasukController::class);
     Route::resource('/kegiatan', KegiatanController::class);
+    Route::resource('/data-keluar', AdminKeluarController::class);
 });

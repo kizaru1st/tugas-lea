@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('judul', 'Data Uang Masuk')
+@section('judul', 'Kegiatan')
 
 @section('custom-css')
 
@@ -16,8 +16,8 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between">
-                <div> Data Uang Masuk</div>
-                <a href="{{ route('data-masuk.create') }}" class="btn btn-outline-primary">Tambah Data</a>
+                <div> Kegiatan</div>
+                <a href="{{ route('kegiatan.create') }}" class="btn btn-outline-primary">Tambah Data</a>
             </div>
         </div>
         <div class="card-body">
@@ -25,22 +25,26 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Bulan Kegiatan</th>
                         <th>Nama Kegiatan</th>
+                        <th>Deskripsi</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1;?>
-                    @foreach ($kegiatan as $item)
+                    @foreach ($kegiatanku as $item)
                     <tr>
                         <td>{{ $i }}</td>
-                        <td>{{ $item->bulan }}</td>
+                        <td>{{ $item->bulan_kegiatan }}</td>
+                        <td>{{ $item->nama_kegiatan }}</td>
+                        <td>{{ $item->deskripsi }}</td>
                         <td>
                             <div class="d-flex">
-                                <a href="{{ route('data-masuk.edit', ['data_masuk' => $item->id]) }}" class="me-2">
-                                    <span class="btn btn-sm btn-success">Detail</span>
+                                <a href="{{ route('kegiatan.edit', ['kegiatan' => $item->id]) }}" class="me-2">
+                                    <span class="btn btn-sm btn-success">Edit</span>
                                 </a>
-                                <form action="{{ route('data-masuk.destroy', ['data_masuk' => $item->id]) }}" method="post">
+                                <form action="{{ route('kegiatan.destroy', ['kegiatan' => $item->id]) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>

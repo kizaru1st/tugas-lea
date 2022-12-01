@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Kegiatan;
+use App\Models\DataUangKeluar;
 use Illuminate\Http\Request;
 
-class KegiatanController extends Controller
+class AdminKeluarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,8 @@ class KegiatanController extends Controller
      */
     public function index()
     {
-        $kegiatanku = Kegiatan::all();
-        return view('admin.kegiatan', compact('kegiatanku'));
+        $data1 = DataUangKeluar::all();
+        return view('admin.datakeluar', compact('data1'));
     }
 
     /**
@@ -25,7 +24,7 @@ class KegiatanController extends Controller
      */
     public function create()
     {
-        return view('admin.create-kegiatan');
+        return view('admin.create-datakeluar');
     }
 
     /**
@@ -36,15 +35,12 @@ class KegiatanController extends Controller
      */
     public function store(Request $request)
     {
-        Kegiatan::create([
-            'nama_kegiatan' => $request->nama_kegiatan,
-            'deskripsi' => $request->deskripsi,
-            'bulan_kegiatan' => $request->bulan_kegiatan,
+        DataUangKeluar::create([
+            'bulan' => $request->bulan,
+            'jumlah' => $request->jumlah,
         ]);
-        return redirect(route("kegiatan.index"));
+        return redirect(route("data-keluar.index"));
     }
-    
-   
 
     /**
      * Display the specified resource.
@@ -63,9 +59,9 @@ class KegiatanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, Kegiatan $kegiatan)
+    public function edit(Request $request, DataUangKeluar $data_keluar)
     {
-        $lists1 = [
+        $lists = [
             "Januari",
             "Februari",
             "Maret",
@@ -79,9 +75,9 @@ class KegiatanController extends Controller
             "November",
             "Desember",
         ];
-        return view('admin.edit-kegiatan', compact('kegiatan'));
+        return view('admin.edit-datakeluar', compact('data_keluar'));
     }
-
+   
     /**
      * Update the specified resource in storage.
      *
@@ -89,25 +85,23 @@ class KegiatanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kegiatan $kegiatan)
+    public function update(Request $request, DataUangKeluar $data_keluar)
     {
-        $kegiatan->update([
-            'nama_kegiatan' => $request->nama_kegiatan,
-            'deskripsi' => $request->deskripsi,
-            'bulan_kegiatan' => $request->bulan_kegiatan,
+        $data_keluar->update([
+            'bulan' => $request->bulan,
+            'jumlah' => $request->jumlah,
         ]);
-        return redirect(route("kegiatan.index"));
+        return redirect(route("data-keluar.index"));
     }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kegiatan $kegiatan)
+    public function destroy(DataUangKeluar $data_keluar)
     {
-        $kegiatan->delete();
-        return redirect(route("kegiatan.index"));
+        $data_keluar->delete();
+        return redirect(route("data-keluar.index"));
     }
 }

@@ -64,12 +64,12 @@
                             </a>
                         </li>
                         <li class="sidebar-item  {{ (request()->is('admin/data-uang-keluar')) ? 'active' : '' }}">
-                            <a href="#" class="sidebar-link">
+                            <a href="{{ route('data-keluar.index') }}" class="sidebar-link">
                                 <span>Data Uang Keluar</span>
                             </a>
                         </li>
-                        <li class="sidebar-item  {{ (request()->is('admin/data-uang-keluar')) ? 'active' : '' }}">
-                            <a href="#" class="sidebar-link">
+                        <li class="sidebar-item  {{ (request()->is('admin/kegiatan', 'admin/kegiatan/create')) ? 'active' : '' }}">
+                            <a href="{{ route('kegiatan.index') }}" class="sidebar-link">
                                 <span>Data Kegiatan</span>
                             </a>
                         </li>
