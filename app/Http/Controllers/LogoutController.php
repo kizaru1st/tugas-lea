@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
+use App\Providers\RouteServiceProvider;
 
-class LoginController extends Controller
+class LogoutController extends Controller
 {
+    public function __invoke(Request $request)
+    {
+        Auth::logout();
+        return redirect()->route('login.create');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +30,7 @@ class LoginController extends Controller
      */
     public function create()
     {
-        return view('auth.login');
+        //
     }
 
     /**
@@ -38,17 +41,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        $attr = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required']
-        ]);
-        if (Auth::attempt($attr)) {
-            return redirect(RouteServiceProvider::HOME);
-        }
-        throw ValidationException::withMessages([
-            'email' => 'Email Salah',
-            'password' => 'Password Salah'
-        ]);
+        //
     }
 
     /**

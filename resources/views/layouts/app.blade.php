@@ -115,7 +115,12 @@
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-box-arrow-left me-2"></i> Logout</a></li>
+                                    <li>
+                                        <form action="{{ route('logout.invoke') }}" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">Logout</button>
+                                        </form>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
